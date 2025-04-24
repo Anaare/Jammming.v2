@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url("/background.jpg");
+  background-size: cover; /* Cover whole screen */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Don’t tile */
+  height: 100vh; /* Full viewport height */
+  width: 100vw;
+  margin: 0; /* Remove default margin */
+  font-family: "Cascadia Code", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* full screen height */
+}
+
+.container {
+  height: 80vh; /* 80% of viewport height */
+  width: 90vw; /* some breathing space on sides */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.contentRow {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  width: 100%;
+  gap: 2rem;
+}
+
+.contentRow > * {
+  width: 45%;
+  height: 30vh;
+  background-color: rgba(255, 255, 255, 0.05); /* just to visualize */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+}

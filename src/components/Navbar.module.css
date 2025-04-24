@@ -1,0 +1,18 @@
+.navbar {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+  background-color: rgba(0, 0, 0, 0.5); /* optional overlay */
+  color: white;
+  margin-bottom: 3.5rem;
+}
+
+.header {
+  font-size: 2.5rem;
+}
+
+.middle {
+  color: #ff6b6b;
+}
