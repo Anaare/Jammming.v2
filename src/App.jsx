@@ -14,12 +14,14 @@ function App() {
       name: "Blinding Lights",
       artist: "The Weeknd",
       album: "After Hours",
+      uri: "strrr",
     },
     {
       id: 2,
       name: "Levitating",
       artist: "Dua Lipa",
       album: "Future Nostalgia",
+      uri: "asdad",
     },
   ];
 
@@ -27,6 +29,8 @@ function App() {
 
   const [playlistName, setPlaylistName] = useState("");
   const [playlistTracks, setPlaylistTracks] = useState([]);
+
+  const [savedPlaylist, setSavedPlaylist] = useState(null);
 
   const addTrackToPlaylist = (track) => {
     if (!playlistTracks.find((t) => t.id === track.id)) {
@@ -36,6 +40,20 @@ function App() {
 
   const removeTrackFromPlaylist = (trackId) => {
     setPlaylistTracks(playlistTracks.filter((track) => track.id !== trackId));
+  };
+
+  const handleSavePlaylist = () => {
+    const uris = playlistTracks.map((track) => track.uri); // map returns an array
+    setSavedPlaylist({
+      name: playlistName,
+      uris: uris,
+    });
+
+    // Reset playlist name and tracks after saving
+    setPlaylistName("");
+    setPlaylistTracks([]);
+
+    console.log("Saved playlist URIs:", uris);
   };
 
   return (
@@ -60,6 +78,7 @@ function App() {
               onAdd={() => {}}
               onRemove={removeTrackFromPlaylist}
               isRemoval={true}
+              onHandleSave={handleSavePlaylist}
             />
           </div>
         </div>

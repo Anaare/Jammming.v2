@@ -9,6 +9,7 @@ const Playlist = ({
   onAdd,
   onRemove,
   isRemoval,
+  onHandleSave,
 }) => {
   return (
     <div className={styles.playlist}>
@@ -33,7 +34,9 @@ const Playlist = ({
         ))}
       </div>
 
-      <button className={styles.saveButton}>save to spotify</button>
+      <button className={styles.saveButton} onClick={onHandleSave}>
+        save to spotify
+      </button>
     </div>
   );
 };
