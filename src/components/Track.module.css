@@ -1,0 +1,50 @@
+:root {
+  --primary-color: #ff6b6b;
+  --primary-hover: #e05555;
+  --border-color: #ccc;
+  --text-color: #fff;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #ccc;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.details {
+  color: var(--text-color);
+}
+
+.details h4 {
+  font-size: 0.8125rem;
+}
+
+.details p {
+  font-size: 0.625rem;
+}
+
+.button {
+  padding: 0.3rem 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.2rem;
+  border: none;
+  background: none;
+  color: var(--text-color);
+}
+
+.button:active {
+  color: var(--primary-hover);
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.0625rem var(--primary-color);
+  border-color: var(--primary-color);
+}

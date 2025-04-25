@@ -1,0 +1,11 @@
+:root {
+  --primary-color: #ff6b6b;
+  --primary-hover: #e05555;
+  --border-color: #ccc;
+  --text-color: #fff;
+}
+
+.heading {
+  color: var(--text-color);
+  margin-bottom: 3.4375rem;
+}
