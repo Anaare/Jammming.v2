@@ -1,5 +1,5 @@
 import styles from "./Searchbar.module.css";
-const SearchBar = ({ searchTerm, setSearchTerm }) => {
+const SearchBar = ({ searchTerm, setSearchTerm, onSearch }) => {
   return (
     <div className={styles.search}>
       <input
@@ -7,7 +7,7 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <button>search</button>
+      <button onClick={onSearch}>search</button>
     </div>
   );
 };

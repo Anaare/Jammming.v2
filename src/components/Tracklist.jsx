@@ -3,7 +3,7 @@ import styles from "./Tracklist.module.css";
 
 const Tracklist = ({ tracks, onAdd, onRemove, isRemoval }) => {
   return (
-    <div>
+    <>
       {tracks.map((track) => (
         <Track
           key={track.id}
@@ -13,7 +13,7 @@ const Tracklist = ({ tracks, onAdd, onRemove, isRemoval }) => {
           isRemoval={isRemoval}
         />
       ))}
-    </div>
+    </>
   );
 };
 

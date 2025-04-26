@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { authUrl, getAccessTokenFromUrl, searchTracks } from "./utils/spotify";
 
 import NavBar from "./components/Navbar";
 import SearchBar from "./components/SearchBar";
@@ -7,68 +8,32 @@ import Playlist from "./components/Playlist";
 
 import "./app.css";
 
-const clientId = "4150329a47d1455e95cdff00a1991331";
-const redirectUri = "http://localhost:5173"; // Must match your Spotify app Redirect URI
-const scopes = ["playlist-modify-public", "playlist-modify-private"]; // whatever you need
-
-const authUrl =
-  `https://accounts.spotify.com/authorize?client_id=${clientId}` +
-  `&response_type=token` +
-  `&redirect_uri=${encodeURIComponent(redirectUri)}` +
-  `&scope=${encodeURIComponent(scopes.join(" "))}` +
-  `&show_dialog=true`;
-
 function App() {
-  const dummyTracks = [
-    {
-      id: 1,
-      name: "Blinding Lights",
-      artist: "The Weeknd",
-      album: "After Hours",
-      uri: "strrr",
-    },
-    {
-      id: 2,
-      name: "Levitating",
-      artist: "Dua Lipa",
-      album: "Future Nostalgia",
-      uri: "asdad",
-    },
-  ];
-
   const [searchTerm, setSearchTerm] = useState("");
-
   const [playlistName, setPlaylistName] = useState("");
   const [playlistTracks, setPlaylistTracks] = useState([]);
-
   const [savedPlaylist, setSavedPlaylist] = useState(null);
-
   const [token, setToken] = useState(null);
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    const hash = window.location.hash;
-    if (hash) {
-      const params = new URLSearchParams(hash.substring(1)); // remove '#'
-      const accessToken = params.get("access_token");
-      if (accessToken) {
-        setToken(accessToken);
-        window.history.pushState(null, null, " "); // clean URL
-      }
+    const accessToken = getAccessTokenFromUrl();
+    if (accessToken) {
+      setToken(accessToken);
+      window.history.pushState(null, null, " "); // clean URL
     }
   }, []);
 
-  if (!token) {
-    return (
-      <button
-        className="authButton"
-        onClick={() => {
-          window.location.href = authUrl; // redirect to authorize
-        }}
-      >
-        Login to Spotify
-      </button>
-    );
-  }
+  const handleSearch = async () => {
+    if (!searchTerm) return;
+    try {
+      const tracks = await searchTracks(searchTerm, token);
+      setSearchResults(tracks);
+      setSearchTerm("");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const addTrackToPlaylist = (track) => {
     if (!playlistTracks.find((t) => t.id === track.id)) {
@@ -81,32 +46,42 @@ function App() {
   };
 
   const handleSavePlaylist = () => {
-    const uris = playlistTracks.map((track) => track.uri); // map returns an array
-    setSavedPlaylist({
-      name: playlistName,
-      uris: uris,
-    });
-
-    // Reset playlist name and tracks after saving
+    const uris = playlistTracks.map((track) => track.uri);
+    setSavedPlaylist({ name: playlistName, uris });
     setPlaylistName("");
     setPlaylistTracks([]);
-
     console.log("Saved playlist URIs:", uris);
   };
+
+  if (!token) {
+    return (
+      <button
+        className="authButton"
+        onClick={() => {
+          window.location.href = authUrl;
+        }}
+      >
+        Login to Spotify
+      </button>
+    );
+  }
 
   return (
     <div>
       <NavBar />
-
       <div className="wrapper">
         <div className="container">
-          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          <SearchBar
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            onSearch={handleSearch}
+          />
           <div className="contentRow">
             <Results
-              tracks={dummyTracks}
               onAdd={addTrackToPlaylist}
               onRemove={() => {}}
               isRemoval={false}
+              tracks={searchResults}
             />
             <Playlist
               playlistName={playlistName}

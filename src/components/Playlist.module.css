@@ -18,6 +18,9 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  max-height: 100%; /* 👈 stay inside parent box */
+  padding-right: 8px; /* 👈 small breathing space */
 }
 
 .playlist input {
