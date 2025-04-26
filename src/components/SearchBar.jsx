@@ -6,6 +6,11 @@ const SearchBar = ({ searchTerm, setSearchTerm, onSearch }) => {
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            onSearch();
+          }
+        }}
       />
       <button onClick={onSearch}>search</button>
     </div>
