@@ -51,3 +51,25 @@ body {
   padding: 1rem;
   /* overflow-y: auto; */
 }
+
+.authButton {
+  display: block;
+  margin: auto; /* centers horizontally */
+  margin-top: 20vh; /* roughly vertically center-ish */
+  width: 200px;
+  height: 60px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  line-height: 60px; /* vertically centers text inside button */
+}
+
+.authButton:hover {
+  background-color: var(--primary-hover);
+}
