@@ -1,5 +1,10 @@
 const clientId = "4150329a47d1455e95cdff00a1991331";
-const redirectUri = "http://localhost:5173";
+// const redirectUri = "http://localhost:5173";
+const redirectUri =
+  window.location.hostname === "localhost"
+    ? "http://localhost:5173"
+    : "https://jammming-final.netlify.app/";
+
 const scopes = ["playlist-modify-public", "playlist-modify-private"];
 
 export const authUrl =
