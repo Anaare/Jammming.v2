@@ -21,6 +21,8 @@ function App() {
   const [token, setToken] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
   const [showSuccessOverlay, setShowSuccessOverlay] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const accessToken = getAccessTokenFromUrl();
@@ -40,12 +42,16 @@ function App() {
 
   const handleSearch = async () => {
     if (!searchTerm) return;
+    setIsSearching(true);
+    setError(null);
     try {
       const tracks = await searchTracks(searchTerm, token);
       setSearchResults(tracks);
       setSearchTerm("");
     } catch (error) {
-      console.error(error);
+      setError("Failed to fetch search results. Please try again.");
+    } finally {
+      setIsSearching(false);
     }
   };
 
@@ -70,6 +76,7 @@ function App() {
       return;
     }
 
+    setError(null);
     try {
       const createdPlaylist = await createPlaylist(token, playlistName);
 
@@ -93,7 +100,7 @@ function App() {
         setShowSuccessOverlay(false);
       }, 3000); // hides after 3 seconds
     } catch (error) {
-      console.error(error);
+      setError("Failed to save tracks to playlist.");
     }
   };
 
@@ -113,6 +120,13 @@ function App() {
   return (
     <div>
       <NavBar />
+      {error && (
+        <div className="error-message">
+          <p>{error}</p>
+          <button onClick={() => setError(null)}>Dismiss</button>
+        </div>
+      )}
+
       {showSuccessOverlay && (
         <div className="success-overlay">
           <p>Playlist saved successfully! 🎉</p>
@@ -125,6 +139,7 @@ function App() {
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
             onSearch={handleSearch}
+            isLoading={isSearching}
           />
           <div className="contentRow">
             <Results
@@ -133,6 +148,7 @@ function App() {
               isRemoval={false}
               tracks={searchResults}
             />
+
             <Playlist
               playlistName={playlistName}
               setPlaylistName={setPlaylistName}
