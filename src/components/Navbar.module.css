@@ -16,3 +16,10 @@
 .middle {
   color: #ff6b6b;
 }
+
+/* Navbar font size for smaller screens */
+@media (max-width: 480px) {
+  .header {
+    font-size: 1.8rem;
+  }
+}

@@ -56,3 +56,19 @@
   box-shadow: 0 0 0 0.0625rem var(--primary-color);
   border-color: var(--primary-color);
 }
+
+@media (max-width: 768px) {
+  .search input {
+    width: 60%;
+  }
+}
+
+@media (max-width: 480px) {
+  .search input {
+    width: 60%;
+  }
+
+  .search button {
+    width: 30%;
+  }
+}
