@@ -5,7 +5,7 @@
 }
 
 .heading {
-  color: var(--text-color);
+  color: #fff;
   margin-bottom: 1rem; /* smaller bottom margin to save space */
   flex-shrink: 0; /* heading won't shrink */
 }

@@ -6,12 +6,12 @@
 
 body {
   background-image: url("/background.jpg");
-  background-size: cover; /* Cover whole screen */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Don’t tile */
-  height: 100vh; /* Full viewport height */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
   width: 100vw;
-  margin: 0; /* Remove default margin */
+  margin: 0;
   font-family: "Cascadia Code", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
@@ -21,12 +21,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* full screen height */
+  height: 100vh;
 }
 
 .container {
-  height: 90vh; /* 80% of viewport height */
-  width: 60vw; /* some breathing space on sides */
+  height: 90vh;
+  width: 60vw;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -45,17 +45,16 @@ body {
 .contentRow > * {
   width: 45%;
   height: 60vh;
-  background-color: rgba(255, 255, 255, 0.05); /* just to visualize */
-  border: 1px solid #ccc;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 2px solid #ff6b81;
   border-radius: 8px;
   padding: 1rem;
-  /* overflow-y: auto; */
 }
 
 .authButton {
   display: block;
-  margin: auto; /* centers horizontally */
-  margin-top: 20vh; /* roughly vertically center-ish */
+  margin: auto;
+  margin-top: 20vh;
   width: 200px;
   height: 60px;
   background-color: var(--primary-color);
@@ -67,9 +66,24 @@ body {
   cursor: pointer;
   transition: background-color 0.3s ease;
   text-align: center;
-  line-height: 60px; /* vertically centers text inside button */
+  line-height: 60px;
 }
 
 .authButton:hover {
   background-color: var(--primary-hover);
+}
+
+.success-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  z-index: 9999;
 }

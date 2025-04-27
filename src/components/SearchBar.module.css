@@ -1,8 +1,16 @@
-:root {
+/* :root {
   --primary-color: #ff6b6b;
   --primary-hover: #e05555;
   --border-color: #ccc;
   --text-color: #fff;
+} */
+
+:root {
+  --primary-color: #ff6b81; /* softer but visible pink */
+  --primary-hover: #e04e68; /* stronger hover */
+  --accent-color: #ffd6e0; /* soft pink for backgrounds or highlights */
+  --border-color: #555; /* darker gray border so it looks better on black bg */
+  --text-color: #f1f1f1; /* slightly softer white */
 }
 
 .search {

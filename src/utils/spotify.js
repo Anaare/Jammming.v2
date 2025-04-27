@@ -39,3 +39,37 @@ export async function searchTracks(searchTerm, token) {
     album: track.album.name,
   }));
 }
+
+export async function getUsername(token) {
+  const response = await fetch("https://api.spotify.com/v1/me", {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch user profile");
+  }
+
+  const data = await response.json();
+
+  return data.display_name; // or data.id if you need the username ID
+}
+
+export async function createPlaylist(token, playlistName) {
+  const response = await fetch("https://api.spotify.com/v1/me/playlists", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: playlistName, // <-- comes from your Playlist component input
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch user profile");
+  }
+
+  const data = await response.json();
+  return data;
+}

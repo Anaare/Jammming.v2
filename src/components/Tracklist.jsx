@@ -1,5 +1,4 @@
 import Track from "./Track";
-import styles from "./Tracklist.module.css";
 
 const Tracklist = ({ tracks, onAdd, onRemove, isRemoval }) => {
   return (
