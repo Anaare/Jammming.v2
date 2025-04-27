@@ -1,4 +1,4 @@
-import styles from "./Searchbar.module.css";
+import styles from "./SearchBar.module.css";
 const SearchBar = ({ searchTerm, setSearchTerm, onSearch }) => {
   return (
     <div className={styles.search}>
