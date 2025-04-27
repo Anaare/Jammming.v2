@@ -13,10 +13,6 @@ Built with React, it features dynamic search, adding/removing tracks, and persis
 - [Technologies](#technologies)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
-- [Folder Structure](#folder-structure)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
 
 ---
 
@@ -42,8 +38,9 @@ This project was built as a part of learning and mastering React, working with A
 
 ## Demo
 
-![Demo GIF or Screenshot](link-to-your-demo-image-or-gif)  
-_Include a screenshot or GIF showcasing the app_
+# Jammming 🎵
+
+🌐 **Live demo:** [https://jammming-final.netlify.app](https://jammming-final.netlify.app)
 
 ---
 
