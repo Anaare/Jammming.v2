@@ -1,67 +1,37 @@
-# Jammming - Spotify Playlist Creator
+# Jammming 🎵
 
-A React web application that allows users to search for songs using the Spotify API, create custom playlists, and save them directly to their Spotify account.  
-Built with React, it features dynamic search, adding/removing tracks, and persistent playlist saving.
-
----
-
-## Table of Contents
-
-- [About the Project](#about-the-project)
-- [Features](#features)
-- [Demo](#demo)
-- [Technologies](#technologies)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-
----
-
-## About the Project
-
-Jammming is a full React front-end app that integrates with the Spotify Web API to give users the ability to search Spotify’s massive music library and curate their own playlists. Users can preview tracks, add or remove songs from their playlists, rename playlists, and save their creations directly to their Spotify account.
-
-This project was built as a part of learning and mastering React, working with APIs, handling authentication tokens, and managing state effectively in modern front-end development.
+A React web application that integrates with the Spotify API, allowing users to search for songs, create custom playlists, and save them directly to their Spotify account — all in a sleek, interactive interface.
 
 ---
 
 ## Features
 
-- User authentication with Spotify
-- Search tracks by keywords (artist, song, album)
-- Add tracks to a custom playlist
-- Remove tracks from the playlist
-- Rename playlists on the fly
-- Save playlists directly to Spotify account
-- Scrollable results and playlist views for better UX
+✅ User authentication with Spotify  
+✅ Search tracks by artist, song, or album  
+✅ Add and remove tracks from a custom playlist  
+✅ Rename playlists dynamically  
+✅ Save playlists directly to Spotify  
+✅ Scrollable search results and playlist views for smooth UX
 
 ---
 
 ## Demo
 
-# Jammming 🎵
-
-🌐 **Live demo:** [https://jammming-final.netlify.app](https://jammming-final.netlify.app)
+**Live demo:** [https://jammming-final.netlify.app](https://jammming-final.netlify.app)
 
 ---
 
-## Technologies
+## Tech Stack
 
-- React.js (Functional components, hooks)
-- Spotify Web API
-- CSS Modules for scoped styling
-- Git & GitHub for version control
-- Optional: Deployment on Netlify / Vercel / GitHub Pages
+- Frontend: React.js (functional components, hooks)
+- Authentication: Spotify OAuth
+- Styling: CSS Modules
+- State Management: React state/hooks
+- Deployment: Netlify
 
 ---
 
 ## Getting Started
-
-### Prerequisites
-
-- Node.js and npm installed
-- Spotify Developer account with client credentials (client ID, client secret)
-
-### Installation
 
 1. Clone the repo:
    ```bash
